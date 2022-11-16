@@ -16,13 +16,13 @@ public class Elevator extends Thread {
 	private ArrayList<ElevatorEvent> listOfEvents;
 	
 	/**
-	 * Constructor. Default Floor for elevator is 0.
+	 * Constructor. Default Floor for elevator is 0. Also intializes list of Events.
 	 * @param elevatorId
 	 */
 	Elevator(int elevatorId) {
 		this.setElevatorId(elevatorId);
 		this.setCurrentFloor(0);
-		this.setListOfDestinations(new ArrayList<>());
+		this.setListOfEvents(new ArrayList<>());
 	}
 
 	/**
@@ -54,7 +54,7 @@ public class Elevator extends Thread {
 		for(int i = 0; i < this.getElevatorId(); i++) {
 			spacer += "\t\t\t";
 		}
-		System.out.printf("Elevator Nr. %d is now running, Destination = %s",this.getElevatorId(), this.getListOfDestinations().get(0).toString());
+		System.out.printf("Elevator Nr. %d is now running, Destination = %s \n",this.getElevatorId(), this.getListOfEvents().get(0).toString());
 		while(!Thread.interrupted()){
 			if (!listOfEvents.isEmpty()) {
 				ElevatorEvent nextEvent = listOfEvents.get(0); 
@@ -118,18 +118,18 @@ public class Elevator extends Thread {
 		this.currentFloor = currentFloor;
 	}
 
-	public ArrayList<ElevatorEvent> getListOfDestinations() {
+	public ArrayList<ElevatorEvent> getListOfEvents() {
 		return listOfEvents;
 	}
 
-	public void setListOfDestinations(ArrayList<ElevatorEvent> listOfEvents) {
+	public void setListOfEvents(ArrayList<ElevatorEvent> listOfEvents) {
 		this.listOfEvents = listOfEvents;
 	}
 
-	public void addToListOfDestinations(ElevatorEvent event) {
+	public void addToListOfEvents(ElevatorEvent event) {
 		listOfEvents.add(event);
 	}
-	public void removeFromListOfDestinations(ElevatorEvent event) {
+	public void removeFromListOfEvents(ElevatorEvent event) {
 		listOfEvents.remove(event);
 	}
 
