@@ -50,7 +50,7 @@ public class ElevatorManager {
 					bestElevator = elevator;
 				}				
 		}
-		bestElevator.addToListOfDestinations(elevatorEvent);
+		bestElevator.addToListOfEvents(elevatorEvent);
 		if(!bestElevator.isAlive()) {
 			bestElevator.start();
 		}	
